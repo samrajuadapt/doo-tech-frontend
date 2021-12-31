@@ -19,7 +19,7 @@ export class TabMainComponent implements OnInit {
       link: '/two',
       index: 1
     }, {
-      label: 'Third',
+      label: 'Data Via Cookie',
       link: '/three',
       index: 2
     },
@@ -28,7 +28,8 @@ export class TabMainComponent implements OnInit {
   activeIndex = 0;
   inputValue = ""
 
-  constructor(private router: Router,private broadcastService:BrodcastService) {
+  constructor(private router: Router,
+    private broadcastService:BrodcastService) {
   }
 
   ngOnInit(): void {
@@ -45,7 +46,6 @@ export class TabMainComponent implements OnInit {
 
   onSubmitClick(){
     this.broadcastService.boradcast("EVENT", this.inputValue);
-    window.localStorage.setItem("data", this.inputValue);
   }
 
 }

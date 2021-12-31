@@ -12,6 +12,8 @@ import { TabMainComponent } from './components/tab-main/tab-main.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrodcastService } from './services/brodcast.service';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import { BrodcastService } from './services/brodcast.service';
     MatTabsModule,
     MatToolbarModule
   ],
-  providers: [BrodcastService],
+  providers: [BrodcastService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

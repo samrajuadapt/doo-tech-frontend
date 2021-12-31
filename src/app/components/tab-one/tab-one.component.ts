@@ -8,9 +8,11 @@ import { BrodcastService } from 'src/app/services/brodcast.service';
 })
 export class TabOneComponent implements OnInit {
 
+  data:any
+
   constructor(private broadcastService:BrodcastService) { 
     this.broadcastService.subscribe("EVENT", (data) => {
-       console.log(`From brodcast ${data}`)
+      this.data = data
       });
   }
 
