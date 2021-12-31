@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Message } from '../entity/message';
 declare var SockJS:any
 declare var Stomp:any
 
@@ -8,17 +10,26 @@ declare var Stomp:any
 })
 export class SocketClientService {
 
+  public data:any
+  stompClient:any
+
   constructor() { 
-    // this.initSockt()
+     this.initSockt()
   }
 
   initSockt(){
-    console.log("SOCKET","init Socket")
     var socket = SockJS(environment.api);
-    var stompClient = Stomp.over(socket)
-    stompClient.connect({},()=>{
+    this.stompClient = Stomp.over(socket)
+    this.stompClient.connect({},()=>{
       console.log("SOCKET","Connected")
+      this.stompClient.subscribe('/receive', (message:any) => {
+        this.data = message
+      });
     })
+  }
+
+  sendMessage(message:any){
+    this.stompClient.send('/app/sent' , {}, message);
   }
 }
 

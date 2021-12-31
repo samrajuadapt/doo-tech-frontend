@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { Message } from 'src/app/entity/message';
 import { BrodcastService } from 'src/app/services/brodcast.service';
+import { SocketClientService } from 'src/app/services/socket-client.service';
 
 @Component({
   selector: 'app-tab-main',
@@ -24,6 +26,11 @@ export class TabMainComponent implements OnInit {
       link: '/three',
       index: 2
     },
+    {
+      label: 'Socket Connection',
+      link: '/four',
+      index: 3
+    },
   ];
 
   activeIndex = 0;
@@ -31,7 +38,8 @@ export class TabMainComponent implements OnInit {
 
   constructor(private router: Router,
     private broadcastService:BrodcastService,
-    private cookie:CookieService) {
+    private cookie:CookieService,
+    private socket:SocketClientService) {
   }
 
   ngOnInit(): void {
@@ -49,6 +57,10 @@ export class TabMainComponent implements OnInit {
   onSubmitClick(){
     this.broadcastService.boradcast("EVENT", this.inputValue);
     this.cookie.set("data",this.inputValue)
+  }
+
+  sendSocket(){
+    this.socket.sendMessage(this.inputValue)
   }
 
 }

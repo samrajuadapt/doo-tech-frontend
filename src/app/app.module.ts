@@ -13,6 +13,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { BrodcastService } from './services/brodcast.service';
 import { CookieService } from 'ngx-cookie-service';
+import { TabFourComponent } from './components/tab-four/tab-four.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { CookieService } from 'ngx-cookie-service';
     TabOneComponent,
     TabTwoComponent,
     TabThreeComponent,
-    TabMainComponent
+    TabMainComponent,
+    TabFourComponent
   ],
   imports: [
     BrowserModule,
