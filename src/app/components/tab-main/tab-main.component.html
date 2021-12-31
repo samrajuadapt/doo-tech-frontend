@@ -1,0 +1,15 @@
+<div class="div-main">
+    <h1>Main Tab</h1>
+    <div class="div-sub">
+        <span>Enter input and press submit button to send data to different tabs via different methods</span>
+        <input class="input-box" (keyup)="onKeyUp($event)"/>
+        <button class="button-box" (click)="onSubmitClick()">Submit</button>
+    </div>
+    <div class="div-tabs">
+        <div class="div-tab" *ngFor="let link of navLinks" (click)="onTabClick(link)"
+            [class.border-bottom]="activeIndex == link.index">{{link.label}}
+        </div>
+
+    </div>
+
+</div>
