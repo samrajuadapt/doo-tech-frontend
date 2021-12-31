@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { BrodcastService } from 'src/app/services/brodcast.service';
 
 @Component({
@@ -29,7 +30,8 @@ export class TabMainComponent implements OnInit {
   inputValue = ""
 
   constructor(private router: Router,
-    private broadcastService:BrodcastService) {
+    private broadcastService:BrodcastService,
+    private cookie:CookieService) {
   }
 
   ngOnInit(): void {
@@ -46,6 +48,7 @@ export class TabMainComponent implements OnInit {
 
   onSubmitClick(){
     this.broadcastService.boradcast("EVENT", this.inputValue);
+    this.cookie.set("data",this.inputValue)
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-tab-three',
@@ -7,12 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabThreeComponent implements OnInit {
 
-  constructor() { 
+  data:any
+
+  constructor(private cookie:CookieService) { 
   }
 
   ngOnInit(): void {
   }
 
-  
+  onBurronClick(){
+    this.data = this.cookie.get("data")
+  }
 
 }
